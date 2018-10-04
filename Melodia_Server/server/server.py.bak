@@ -1,0 +1,108 @@
+# -*- coding:utf-8 -*- 
+# ! usr/bin/python
+
+from socket import *
+import time
+import threading
+import os
+import md5
+
+Host = ''
+Port = 2017
+Addr = (Host, Port)
+
+midi_dict = {}
+
+
+def md5_encode(src):
+    m1 = md5.new()
+    m1.update(src)
+    return m1.hexdigest()
+
+
+def tcplink(sock, addr):
+    music_data = ''
+    while True:
+        data = sock.recv(1480)
+        # print data[-9:]
+        if data[-9:]=='endbidou1':
+            print 'dsadad'
+            music_data+=data
+            music_data=music_data[:-9]
+            print (music_data[-20:])
+            midi_data = eval(music_data)  # 字符串转字典
+            if midi_data['request'] == 1:
+                flag_md5 = md5_encode(str(time.time()))
+                print 'md5: ', flag_md5
+                print 'server data send'
+                wav_name = flag_md5 + '.wav'
+                with open(wav_name, 'w+') as f:
+                    f.write(midi_data['data'].decode('base64'))
+                    #f.write(midi_data['data'])
+                    f.close()
+                n = midi_data['config']['n'];
+                m = midi_data['config']['m'];
+                w = midi_data['config']['w'];
+                midi_name = flag_md5 + '.mid'
+                with open(midi_name, 'w') as f:
+                    f.close()
+                shell = '../mldm/hum2midi.py -n '+str(n)+' -m '+str(m)+' -w '+str(w)+' -o ' + midi_name + ' ' + wav_name
+		print "running "+ shell
+                ret = os.system(shell)
+                ret >= 8
+                print 'ret value if 0 return', ret
+                if ret == 0:
+                # if True:
+		    shell1 = 'mono ../mlds/sheet '+midi_name+' '+flag_md5
+		    ret1 = os.system(shell1)
+		    if ret1 == 0:
+                        sock.send(flag_md5.encode())
+                        print 'socket data send'
+                        midi_dict[flag_md5] = midi_name
+                        break
+	 	    else:
+			print 'python error'
+			break
+                else:
+                    print 'python error'
+                    break
+            elif midi_data['request'] == 2:
+                # print midi_data
+                flag = midi_data['data']
+                print flag
+                if flag in midi_dict.keys():
+                    # sock.send('i have found id!')
+                    fo = open(flag+'.mid', 'rb')
+                    while True:
+                        filedata = fo.read(1024)
+                        if not filedata:
+                            break
+                        sock.send(filedata)
+                    fo.close()
+                    break
+                    # 返回midi文件
+                else:
+                    sock.send('sorry i do not find it!')
+                    print 'flag-md5 error'
+                    break
+            else:
+                print 'json error'
+                # print music_data[:-9]
+        else:
+            music_data += data
+    print 'tcp close'
+    sock.close()
+
+
+tcpSerSock = socket(AF_INET, SOCK_STREAM)
+tcpSerSock.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1)
+tcpSerSock.bind(Addr)
+tcpSerSock.listen(5)
+
+while True:
+    tcpCliSock, tcpCliAddr = tcpSerSock.accept()
+    print 'add ', tcpCliAddr
+    t = threading.Thread(target=tcplink, args=(tcpCliSock, tcpCliAddr))
+    t.start()
+tcpSerSock.close()
+

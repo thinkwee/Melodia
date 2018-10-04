@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <info.abdolahi.CircularMusicProgressBar xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/progressbar"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:src="@drawable/recordbackground"
+            app:border_color="#505e6b"
+            app:border_width="10dp"
+            app:centercircle_diammterer="1"
+            app:progress_color="#c6f364"
+            app:progress_startAngle="0" />
+
+        <com.sackcentury.shinebuttonlib.ShineButton
+            android:id="@+id/bt_shine"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:src="@android:color/darker_gray"
+            app:allow_random_color="true"
+            app:big_shine_color="#ff6b6b"
+            app:btn_color="@android:color/darker_gray"
+            app:btn_fill_color="#ff6b6b"
+            app:click_animation_duration="200"
+            app:enable_flashing="false"
+            app:shine_animation_duration="1500"
+            app:shine_count="8"
+            app:shine_distance_multiple="1.5"
+            app:shine_turn_angle="10"
+            app:small_shine_color="#CC9999"
+            app:small_shine_offset_angle="20" />
+    </FrameLayout>
+
+
+    <TextView
+        android:id="@+id/tv_record"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabrecord"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_margin="@dimen/fab_margin"
+        android:elevation="6dp"
+        android:visibility="visible"
+        app:backgroundTint="#4ECCC1"
+        app:pressedTranslationZ="12dp"
+        app:rippleColor="#53868B"
+        app:srcCompat="@drawable/ic_fiber_manual_record_white_24dp" />
+
+    <com.sackcentury.shinebuttonlib.ShineButton
+        android:id="@+id/bt_upload"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:src="@android:color/darker_gray"
+        app:allow_random_color="true"
+        app:big_shine_color="#ff6b6b"
+        app:btn_color="@android:color/darker_gray"
+        app:btn_fill_color="#ff6b6b"
+        app:click_animation_duration="200"
+        app:enable_flashing="false"
+        app:shine_animation_duration="1500"
+        app:shine_count="8"
+        app:shine_distance_multiple="1.5"
+        app:shine_turn_angle="10"
+        app:small_shine_color="#CC9999"
+        app:small_shine_offset_angle="20" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:text="按住按钮开始录音\n松开按钮完成录音，点击完成按钮继续\n按住录音按钮时向外滑并松开取消录音"/>
+
+
+</LinearLayout>

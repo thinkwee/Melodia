@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Melodia</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="about">Melodia大创项目展示app\n版本1.9\n2017.5.17\n\n硬件、算法：段奇甫\nAndroid：刘维\n服务器：康凌浩，薄德瑜\n前端：虞家宁 </string>
+</resources>
