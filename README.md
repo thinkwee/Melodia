@@ -1,9 +1,4 @@
 # Melodia
-- ±±ÓÊ´óÑ§Éú´´ĞÂÏîÄ¿
-- ÈËºß³ªÉù×ªmidiÒôÀÖ£¬ÏÔÊ¾ÇúÆ×£¬¿ØÖÆµç×ÓÇÙ²¥·Å
-- °üÀ¨·şÎñÆ÷¶Ë¡¢Android¿Í»§¶Ë
-
-## ½ØÍ¼
-![mark](http://ojtdnrpmt.bkt.clouddn.com/blog/181004/4iHDA3Fk7i.gif)
-
-![mark](http://ojtdnrpmt.bkt.clouddn.com/blog/181004/i1gldeDj8b.gif)
+- åŒ—é‚®å¤§å­¦ç”Ÿåˆ›æ–°é¡¹ç›®
+- äººå“¼å”±å£°è½¬midiéŸ³ä¹ï¼Œæ˜¾ç¤ºæ›²è°±ï¼Œæ§åˆ¶ç”µå­ç´æ’­æ”¾
+- åŒ…æ‹¬æœåŠ¡å™¨ç«¯ã€Androidå®¢æˆ·ç«¯
